@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Quiz Platform — Frontend
 
 React SPA (Vite + Tailwind CSS + React Router) for the Quiz Management & Online Assessment Platform. Deploys on **Vercel**.
@@ -39,3 +40,7 @@ Leave `VITE_API_URL` empty in local dev (uses the proxy).
 2. Vercel → **New Project** → import the repo. Framework preset: **Vite** (build `npm run build`, output `dist`).
 3. Add env var: `VITE_API_URL=https://your-backend.onrender.com` (no trailing slash).
 4. `vercel.json` includes SPA rewrites so React Router works on page refresh.
+=======
+# Quiz-Management_frontend
+A modern React.js frontend built with Vite for a full-stack web application. Features a responsive UI, API integration with Spring Boot, and optimized deployment on Vercel..
+>>>>>>> 2745ea500b14d0f43dde58f3a586eb4985dce230
