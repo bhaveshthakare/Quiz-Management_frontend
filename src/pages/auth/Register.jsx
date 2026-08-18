@@ -35,8 +35,9 @@ export default function Register() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
             <div>
-              <label className="label">Full name</label>
+              <label htmlFor="reg-name" className="label">Full name</label>
               <input
+                id="reg-name"
                 className="input"
                 placeholder="Rahul Sharma"
                 {...register('name', { required: 'Name is required' })}
@@ -44,8 +45,9 @@ export default function Register() {
               {errors.name && <p className="mt-1 text-xs text-rose-600">{errors.name.message}</p>}
             </div>
             <div>
-              <label className="label">Email</label>
+              <label htmlFor="reg-email" className="label">Email</label>
               <input
+                id="reg-email"
                 type="email"
                 className="input"
                 placeholder="you@example.com"
@@ -57,8 +59,9 @@ export default function Register() {
               {errors.email && <p className="mt-1 text-xs text-rose-600">{errors.email.message}</p>}
             </div>
             <div>
-              <label className="label">Password</label>
+              <label htmlFor="reg-password" className="label">Password</label>
               <input
+                id="reg-password"
                 type="password"
                 className="input"
                 placeholder="At least 6 characters with letters and numbers"
@@ -71,8 +74,9 @@ export default function Register() {
               {errors.password && <p className="mt-1 text-xs text-rose-600">{errors.password.message}</p>}
             </div>
             <div>
-              <label className="label">Confirm password</label>
+              <label htmlFor="reg-confirm" className="label">Confirm password</label>
               <input
+                id="reg-confirm"
                 type="password"
                 className="input"
                 placeholder="Repeat your password"

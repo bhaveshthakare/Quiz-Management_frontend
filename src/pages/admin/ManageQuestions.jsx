@@ -215,8 +215,8 @@ export default function ManageQuestions() {
       <Modal open={!!editing} onClose={() => setEditing(null)} title={editing?.id ? 'Edit question' : 'Add question'} wide>
         <form onSubmit={handleSubmit(onSave)} className="space-y-4">
           <div>
-            <label className="label">Question text *</label>
-            <textarea className="input min-h-20" {...register('questionText', { required: 'Question text is required' })} />
+            <label htmlFor="q-text" className="label">Question text *</label>
+            <textarea id="q-text" className="input min-h-20" {...register('questionText', { required: 'Question text is required' })} />
             {errors.questionText && <p className="mt-1 text-xs text-rose-600">{errors.questionText.message}</p>}
           </div>
 
@@ -229,6 +229,7 @@ export default function ManageQuestions() {
                     {LETTERS[i]}
                   </span>
                   <input
+                    aria-label={`Option ${LETTERS[i]}`}
                     className="input"
                     placeholder={`Option ${LETTERS[i]}`}
                     {...register(`options.${i}`, { required: 'Option text is required' })}
@@ -248,20 +249,20 @@ export default function ManageQuestions() {
 
           <div className="grid gap-4 md:grid-cols-3">
             <div>
-              <label className="label">Marks *</label>
-              <input type="number" min="1" className="input" {...register('marks', { required: true, min: 1 })} />
+              <label htmlFor="q-marks" className="label">Marks *</label>
+              <input id="q-marks" type="number" min="1" className="input" {...register('marks', { required: true, min: 1 })} />
             </div>
             <div>
-              <label className="label">Difficulty</label>
-              <select className="input" {...register('difficulty')}>
+              <label htmlFor="q-difficulty" className="label">Difficulty</label>
+              <select id="q-difficulty" className="input" {...register('difficulty')}>
                 <option value="EASY">Easy</option>
                 <option value="INTERMEDIATE">Intermediate</option>
                 <option value="HARD">Hard</option>
               </select>
             </div>
             <div>
-              <label className="label">Explanation</label>
-              <input className="input" placeholder="Shown after quiz" {...register('explanation')} />
+              <label htmlFor="q-explanation" className="label">Explanation</label>
+              <input id="q-explanation" className="input" placeholder="Shown after quiz" {...register('explanation')} />
             </div>
           </div>
 

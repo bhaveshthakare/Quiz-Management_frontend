@@ -80,51 +80,51 @@ export default function QuizForm() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="card space-y-5 p-6">
         <div>
-          <label className="label">Quiz title *</label>
-          <input className="input" placeholder="e.g. JavaScript Fundamentals" {...register('title', { required: 'Title is required' })} />
+          <label htmlFor="quiz-title" className="label">Quiz title *</label>
+          <input id="quiz-title" className="input" placeholder="e.g. JavaScript Fundamentals" {...register('title', { required: 'Title is required' })} />
           {errors.title && <p className="mt-1 text-xs text-rose-600">{errors.title.message}</p>}
         </div>
 
         <div>
-          <label className="label">Description</label>
-          <textarea className="input min-h-24" placeholder="What does this quiz cover?" {...register('description')} />
+          <label htmlFor="quiz-description" className="label">Description</label>
+          <textarea id="quiz-description" className="input min-h-24" placeholder="What does this quiz cover?" {...register('description')} />
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <label className="label">Category *</label>
-            <select className="input" {...register('categoryId', { required: 'Category is required' })}>
+            <label htmlFor="quiz-category" className="label">Category *</label>
+            <select id="quiz-category" className="input" {...register('categoryId', { required: 'Category is required' })}>
               <option value="">Select category</option>
               {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
             {errors.categoryId && <p className="mt-1 text-xs text-rose-600">{errors.categoryId.message}</p>}
           </div>
           <div>
-            <label className="label">Difficulty *</label>
-            <select className="input" {...register('difficulty', { required: 'Difficulty is required' })}>
+            <label htmlFor="quiz-difficulty" className="label">Difficulty *</label>
+            <select id="quiz-difficulty" className="input" {...register('difficulty', { required: 'Difficulty is required' })}>
               <option value="EASY">Easy</option>
               <option value="INTERMEDIATE">Intermediate</option>
               <option value="HARD">Hard</option>
             </select>
           </div>
           <div>
-            <label className="label">Duration (minutes) *</label>
-            <input type="number" min="1" className="input" {...register('duration', { required: 'Duration is required', min: 1 })} />
+            <label htmlFor="quiz-duration" className="label">Duration (minutes) *</label>
+            <input id="quiz-duration" type="number" min="1" className="input" {...register('duration', { required: 'Duration is required', min: 1 })} />
             {errors.duration && <p className="mt-1 text-xs text-rose-600">{errors.duration.message}</p>}
           </div>
           <div>
-            <label className="label">Passing score (%) *</label>
-            <input type="number" min="0" max="100" className="input" {...register('passingScore', { required: 'Passing score is required', min: 0, max: 100 })} />
+            <label htmlFor="quiz-passing-score" className="label">Passing score (%) *</label>
+            <input id="quiz-passing-score" type="number" min="0" max="100" className="input" {...register('passingScore', { required: 'Passing score is required', min: 0, max: 100 })} />
             {errors.passingScore && <p className="mt-1 text-xs text-rose-600">{errors.passingScore.message}</p>}
           </div>
           <div>
-            <label className="label">Maximum attempts *</label>
-            <input type="number" min="1" className="input" {...register('maxAttempts', { required: 'Max attempts is required', min: 1 })} />
+            <label htmlFor="quiz-max-attempts" className="label">Maximum attempts *</label>
+            <input id="quiz-max-attempts" type="number" min="1" className="input" {...register('maxAttempts', { required: 'Max attempts is required', min: 1 })} />
             {errors.maxAttempts && <p className="mt-1 text-xs text-rose-600">{errors.maxAttempts.message}</p>}
           </div>
           <div>
-            <label className="label">Status *</label>
-            <select className="input" {...register('status')}>
+            <label htmlFor="quiz-status" className="label">Status *</label>
+            <select id="quiz-status" className="input" {...register('status')}>
               <option value="DRAFT">Draft</option>
               <option value="PUBLISHED">Published</option>
               <option value="UNPUBLISHED">Unpublished</option>
@@ -133,18 +133,18 @@ export default function QuizForm() {
         </div>
 
         <div>
-          <label className="label">Thumbnail URL (optional)</label>
-          <input className="input" placeholder="https://..." {...register('thumbnail')} />
+          <label htmlFor="quiz-thumbnail" className="label">Thumbnail URL (optional)</label>
+          <input id="quiz-thumbnail" className="input" placeholder="https://..." {...register('thumbnail')} />
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <label className="label">Scheduled start (optional)</label>
-            <input type="datetime-local" className="input" {...register('startDate')} />
+            <label htmlFor="quiz-start-date" className="label">Scheduled start (optional)</label>
+            <input id="quiz-start-date" type="datetime-local" className="input" {...register('startDate')} />
           </div>
           <div>
-            <label className="label">Scheduled end (optional)</label>
-            <input type="datetime-local" className="input" {...register('endDate')} />
+            <label htmlFor="quiz-end-date" className="label">Scheduled end (optional)</label>
+            <input id="quiz-end-date" type="datetime-local" className="input" {...register('endDate')} />
           </div>
         </div>
 
@@ -157,8 +157,8 @@ export default function QuizForm() {
             Deduct marks for incorrect answers (suggested: 0.5 per mark).
           </p>
           <div className="mt-3">
-            <label className="label">Penalty (× question marks)</label>
-            <input type="number" step="0.01" min="0" className="input" defaultValue="0.5" {...register('negativeMarkValue')} />
+            <label htmlFor="quiz-negative-mark" className="label">Penalty (× question marks)</label>
+            <input id="quiz-negative-mark" type="number" step="0.01" min="0" className="input" defaultValue="0.5" {...register('negativeMarkValue')} />
           </div>
         </div>
 

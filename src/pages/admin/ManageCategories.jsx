@@ -112,13 +112,13 @@ export default function ManageCategories() {
       <Modal open={!!editing} onClose={() => setEditing(null)} title={editing?.id ? 'Edit category' : 'New category'}>
         <form onSubmit={handleSubmit(onSave)} className="space-y-4">
           <div>
-            <label className="label">Name *</label>
-            <input className="input" placeholder="e.g. JavaScript" {...register('name', { required: 'Name is required' })} />
+            <label htmlFor="cat-name" className="label">Name *</label>
+            <input id="cat-name" className="input" placeholder="e.g. JavaScript" {...register('name', { required: 'Name is required' })} />
             {errors.name && <p className="mt-1 text-xs text-rose-600">{errors.name.message}</p>}
           </div>
           <div>
-            <label className="label">Description</label>
-            <input className="input" placeholder="Short description" {...register('description')} />
+            <label htmlFor="cat-description" className="label">Description</label>
+            <input id="cat-description" className="input" placeholder="Short description" {...register('description')} />
           </div>
           <div className="flex justify-end gap-3">
             <button type="button" onClick={() => setEditing(null)} className="btn-secondary">Cancel</button>

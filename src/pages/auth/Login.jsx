@@ -36,8 +36,9 @@ export default function Login() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
             <div>
-              <label className="label">Email</label>
+              <label htmlFor="login-email" className="label">Email</label>
               <input
+                id="login-email"
                 type="email"
                 className="input"
                 placeholder="you@example.com"
@@ -46,8 +47,9 @@ export default function Login() {
               {errors.email && <p className="mt-1 text-xs text-rose-600">{errors.email.message}</p>}
             </div>
             <div>
-              <label className="label">Password</label>
+              <label htmlFor="login-password" className="label">Password</label>
               <input
+                id="login-password"
                 type="password"
                 className="input"
                 placeholder="••••••••"

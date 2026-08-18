@@ -44,8 +44,9 @@ export default function ForgotPassword() {
         </p>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
           <div>
-            <label className="label">Email</label>
+            <label htmlFor="fp-email" className="label">Email</label>
             <input
+              id="fp-email"
               type="email"
               className="input"
               placeholder="you@example.com"

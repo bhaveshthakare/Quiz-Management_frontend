@@ -26,8 +26,9 @@ export default function ResetPassword() {
         <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Choose a strong password for your account.</p>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
           <div>
-            <label className="label">New password</label>
+            <label htmlFor="rp-password" className="label">New password</label>
             <input
+              id="rp-password"
               type="password"
               className="input"
               placeholder="At least 6 characters"
@@ -39,8 +40,9 @@ export default function ResetPassword() {
             {errors.password && <p className="mt-1 text-xs text-rose-600">{errors.password.message}</p>}
           </div>
           <div>
-            <label className="label">Confirm password</label>
+            <label htmlFor="rp-confirm" className="label">Confirm password</label>
             <input
+              id="rp-confirm"
               type="password"
               className="input"
               placeholder="Repeat your password"
