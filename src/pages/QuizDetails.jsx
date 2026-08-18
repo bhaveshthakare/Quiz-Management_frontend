@@ -15,6 +15,7 @@ export default function QuizDetails() {
   const { id } = useParams()
   const [quiz, setQuiz] = useState(null)
   const [starting, setStarting] = useState(false)
+  const [limitReached, setLimitReached] = useState(false)
   const { isAuthenticated, isAdmin } = useAuth()
   const navigate = useNavigate()
 
@@ -37,7 +38,11 @@ export default function QuizDetails() {
       const { data } = await client.post(`/api/quizzes/${id}/start`)
       navigate(`/student/attempt/${id}/${data.attemptId}`)
     } catch (e) {
-      toast.error(errorMessage(e))
+      const msg = errorMessage(e)
+      if (msg.toLowerCase().includes('maximum number of attempts')) {
+        setLimitReached(true)
+      }
+      toast.error(msg)
     } finally {
       setStarting(false)
     }
@@ -123,10 +128,24 @@ export default function QuizDetails() {
               </div>
             )}
 
+            {limitReached && (
+              <div className="mt-6 flex items-start gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800 dark:border-rose-900 dark:bg-rose-900/30 dark:text-rose-200">
+                <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" />
+                <p>
+                  You've used all <strong>{quiz.maxAttempts}</strong> allowed attempts for this quiz.
+                  You can review past results from your history, or check back if the admin raises the limit.
+                </p>
+              </div>
+            )}
+
             <div className="mt-8 flex flex-col items-center gap-3">
-              <button onClick={startQuiz} disabled={starting} className="btn-primary px-8 py-3 text-base">
+              <button
+                onClick={startQuiz}
+                disabled={starting || limitReached}
+                className="btn-primary px-8 py-3 text-base disabled:cursor-not-allowed disabled:opacity-50"
+              >
                 <Play className="h-5 w-5" />
-                {starting ? 'Starting...' : 'Start Quiz'}
+                {limitReached ? 'Attempts exhausted' : starting ? 'Starting...' : 'Start Quiz'}
               </button>
               <p className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
                 <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
