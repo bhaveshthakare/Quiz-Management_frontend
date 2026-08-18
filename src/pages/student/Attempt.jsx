@@ -29,7 +29,7 @@ export default function Attempt() {
         if (q.selectedOptionId) map[q.questionId] = q.selectedOptionId
       })
       setAnswers(map)
-      const ms = new Date(d.deadline).getTime() - Date.now()
+      const ms = d.deadline - Date.now()
       setRemaining(Math.max(0, Math.floor(ms / 1000)))
     } catch (e) {
       toast.error(errorMessage(e))
