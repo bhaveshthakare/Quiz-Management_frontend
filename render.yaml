@@ -1,0 +1,13 @@
+services:
+  - type: static_site
+    name: quiz-frontend
+    runtime: static
+    repo: https://github.com/bhaveshthakare/Quiz-Management_frontend
+    branch: main
+    buildCommand: npm run build
+    publishPath: dist
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: VITE_API_URL
+        value: https://quiz-backend.onrender.com
