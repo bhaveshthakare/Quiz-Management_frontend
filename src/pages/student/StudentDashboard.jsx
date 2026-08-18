@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BarChart3, BookOpen, Clock, Target, TrendingUp, Trophy, XCircle } from 'lucide-react'
+import { ArrowRight, BarChart3, BookOpen, Clock, Flame, Sparkles, Target, TrendingUp, Trophy, XCircle } from 'lucide-react'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import client from '../../api/client'
 import { useAuth } from '../../store/auth'
@@ -12,10 +12,17 @@ const statusTone = { PASSED: 'green', FAILED: 'red' }
 export default function StudentDashboard() {
   const { user } = useAuth()
   const [history, setHistory] = useState([])
+  const [quizzes, setQuizzes] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    client.get('/api/attempts').then((r) => setHistory(r.data)).catch(() => {}).finally(() => setLoading(false))
+    Promise.all([
+      client.get('/api/attempts').catch(() => ({ data: [] })),
+      client.get('/api/quizzes').catch(() => ({ data: [] })),
+    ]).then(([h, q]) => {
+      setHistory(h.data)
+      setQuizzes(q.data.filter((quiz) => quiz.status === 'PUBLISHED').slice(0, 3))
+    }).finally(() => setLoading(false))
   }, [])
 
   if (loading) return <Spinner />
@@ -24,36 +31,56 @@ export default function StudentDashboard() {
   const failed = history.filter((a) => a.status === 'FAILED').length
   const avg = history.length ? Math.round(history.reduce((s, a) => s + Number(a.percentage), 0) / history.length) : 0
   const best = history.length ? Math.max(...history.map((a) => Number(a.percentage))) : 0
-  const answered = history.reduce((s, a) => s + a.correctAnswers + a.incorrectAnswers, 0)
   const chartData = [...history].reverse().slice(-14).map((a) => ({
     name: new Date(a.completedAt).toLocaleDateString(undefined, { day: '2-digit', month: 'short' }),
     score: Number(a.percentage),
   }))
+  const streak = history.filter((a) => a.status === 'PASSED').length
 
   const stats = [
-    { icon: BookOpen, label: 'Quizzes attempted', value: history.length, tone: 'text-primary-600 bg-primary-50 dark:bg-primary-900/40 dark:text-primary-300' },
-    { icon: Trophy, label: 'Passed', value: passed, tone: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-900/40 dark:text-emerald-300' },
-    { icon: XCircle, label: 'Failed', value: failed, tone: 'text-rose-600 bg-rose-50 dark:bg-rose-900/40 dark:text-rose-300' },
-    { icon: Target, label: 'Average score', value: `${avg}%`, tone: 'text-violet-600 bg-violet-50 dark:bg-violet-900/40 dark:text-violet-300' },
-    { icon: TrendingUp, label: 'Highest score', value: `${best}%`, tone: 'text-amber-600 bg-amber-50 dark:bg-amber-900/40 dark:text-amber-300' },
-    { icon: BarChart3, label: 'Questions answered', value: answered, tone: 'text-sky-600 bg-sky-50 dark:bg-sky-900/40 dark:text-sky-300' },
+    { icon: BookOpen, label: 'Quizzes attempted', value: history.length, tone: 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300' },
+    { icon: Trophy, label: 'Passed', value: passed, tone: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-300' },
+    { icon: XCircle, label: 'Failed', value: failed, tone: 'bg-rose-100 text-rose-600 dark:bg-rose-900/40 dark:text-rose-300' },
+    { icon: Target, label: 'Average score', value: `${avg}%`, tone: 'bg-violet-100 text-violet-600 dark:bg-violet-900/40 dark:text-violet-300' },
+    { icon: TrendingUp, label: 'Highest score', value: `${best}%`, tone: 'bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-300' },
+    { icon: Flame, label: 'Quizzes passed', value: streak, tone: 'bg-orange-100 text-orange-600 dark:bg-orange-900/40 dark:text-orange-300' },
   ]
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Hi, {user.name.split(' ')[0]} 👋</h1>
-        <p className="mt-1 text-slate-500 dark:text-slate-400">Here&apos;s your quiz activity at a glance.</p>
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 via-violet-600 to-fuchsia-500 p-8 text-white shadow-xl shadow-primary-500/20">
+        <div className="absolute -right-10 -top-10 h-52 w-52 rounded-full bg-white/10 blur-2xl" />
+        <div className="absolute -bottom-20 right-32 h-44 w-44 rounded-full bg-white/10 blur-xl" />
+        <div className="relative flex flex-wrap items-center justify-between gap-6">
+          <div className="flex items-center gap-5">
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white/15 text-3xl font-extrabold backdrop-blur">
+              {user?.name?.charAt(0)?.toUpperCase() || 'S'}
+            </div>
+            <div>
+              <p className="flex items-center gap-2 text-sm font-medium text-white/70">
+                <Sparkles className="h-4 w-4" /> Student dashboard
+              </p>
+              <h1 className="mt-1 text-3xl font-extrabold tracking-tight">Hi, {user?.name?.split(' ')[0] || 'there'} 👋</h1>
+              <p className="mt-1.5 text-sm text-white/80">Keep the momentum going — {quizzes.length > 0 ? 'fresh quizzes are waiting for you.' : 'your performance is looking great!'}</p>
+            </div>
+          </div>
+          <Link
+            to="/student/quizzes"
+            className="inline-flex items-center gap-2 rounded-2xl bg-white/15 px-6 py-3.5 text-sm font-bold text-white backdrop-blur transition hover:bg-white/25"
+          >
+            <BookOpen className="h-4 w-4" /> Browse quizzes <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {stats.map((s) => (
-          <div key={s.label} className="card p-4">
-            <div className={`mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg ${s.tone}`}>
+          <div key={s.label} className="card card-hover p-5">
+            <div className={`stat-chip ${s.tone}`}>
               <s.icon className="h-5 w-5" />
             </div>
-            <p className="text-2xl font-bold text-slate-900 dark:text-white">{s.value}</p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">{s.label}</p>
+            <p className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">{s.value}</p>
+            <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">{s.label}</p>
           </div>
         ))}
       </div>
@@ -74,7 +101,7 @@ export default function StudentDashboard() {
                 <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#94a3b8' }} />
                 <YAxis domain={[0, 100]} tick={{ fontSize: 12, fill: '#94a3b8' }} />
                 <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0', background: 'white' }} />
-                <Line type="monotone" dataKey="score" name="Score %" stroke="#3c6cf0" strokeWidth={2} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="score" name="Score %" stroke="#5b24f4" strokeWidth={2.5} dot={{ r: 4 }} />
               </LineChart>
             </ResponsiveContainer>
           )}
@@ -109,6 +136,36 @@ export default function StudentDashboard() {
           )}
         </div>
       </div>
+
+      {quizzes.length > 0 && (
+        <div className="mt-8">
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white">
+              <BookOpen className="h-5 w-5 text-primary-600 dark:text-primary-400" /> Recommended for you
+            </h2>
+            <Link to="/student/quizzes" className="text-sm font-semibold text-primary-600 hover:underline">See all quizzes</Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {quizzes.map((quiz) => (
+              <Link key={quiz.id} to={`/quizzes/${quiz.id}`} className="card card-hover group p-5">
+                <div className="flex items-start justify-between">
+                  <Badge tone="blue">{quiz.difficulty}</Badge>
+                  <BarChart3 className="h-4 w-4 text-slate-300 transition group-hover:text-primary-500 dark:text-slate-600" />
+                </div>
+                <h3 className="mt-3 font-bold text-slate-900 dark:text-white">{quiz.title}</h3>
+                <p className="mt-1 line-clamp-2 text-sm text-slate-500 dark:text-slate-400">{quiz.description}</p>
+                <div className="mt-4 flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+                  <span>{quiz.questionCount} questions</span>
+                  <span>·</span>
+                  <span>{quiz.duration} min</span>
+                  <span>·</span>
+                  <span>Pass {quiz.passingScore}%</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
