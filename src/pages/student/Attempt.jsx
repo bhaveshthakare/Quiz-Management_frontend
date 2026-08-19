@@ -209,7 +209,7 @@ export default function Attempt() {
                       isCurrent
                         ? 'ring-2 ring-primary-500 ring-offset-2 dark:ring-offset-slate-900'
                         : ''
-                    } ${answered ? 'bg-emerald-500 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700'}`}
+                    } ${answered ? 'bg-success-500 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700'}`}
                   >
                     {idx + 1}
                   </button>
@@ -218,7 +218,7 @@ export default function Attempt() {
             </div>
             <div className="mt-5 space-y-2 text-xs text-slate-500 dark:text-slate-400">
               <p className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded bg-emerald-500" /> Answered
+                <span className="h-3 w-3 rounded bg-success-500" /> Answered
               </p>
               <p className="flex items-center gap-2">
                 <span className="h-3 w-3 rounded bg-slate-200 dark:bg-slate-700" /> Unanswered
@@ -227,7 +227,7 @@ export default function Attempt() {
                 <Circle className="h-3 w-3" /> Current
               </p>
             </div>
-            <p className="mt-4 flex items-center gap-1.5 rounded-lg bg-amber-50 p-2.5 text-xs text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
+            <p className="mt-4 flex items-center gap-1.5 rounded-lg bg-accent-50 p-2.5 text-xs text-accent-700 dark:bg-accent-900/30 dark:text-accent-300">
               <CheckCircle2 className="h-4 w-4 shrink-0" />
               Answers are saved as you select them. The quiz auto-submits when time runs out.
             </p>

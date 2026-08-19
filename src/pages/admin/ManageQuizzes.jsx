@@ -108,7 +108,7 @@ export default function ManageQuizzes() {
                       </Link>
                       <button
                         onClick={() => togglePublish(q)}
-                        className={`btn px-3 py-1.5 text-xs ${q.status === 'PUBLISHED' ? 'bg-amber-500 text-white hover:bg-amber-600' : 'bg-emerald-600 text-white hover:bg-emerald-700'}`}
+                        className={`btn px-3 py-1.5 text-xs ${q.status === 'PUBLISHED' ? 'bg-accent-500 text-white hover:bg-accent-600' : 'bg-success-600 text-white hover:bg-success-700'}`}
                       >
                         {q.status === 'PUBLISHED' ? 'Unpublish' : 'Publish'}
                       </button>

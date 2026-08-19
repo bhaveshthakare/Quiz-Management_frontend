@@ -117,7 +117,7 @@ export default function ManageUsers() {
                       <button onClick={() => openProfile(u)} className="btn-secondary px-3 py-1.5 text-xs">Profile</button>
                       <button
                         onClick={() => toggleStatus(u)}
-                        className={`btn px-3 py-1.5 text-xs ${u.status === 'ACTIVE' ? 'bg-amber-500 text-white hover:bg-amber-600' : 'bg-emerald-600 text-white hover:bg-emerald-700'}`}
+                        className={`btn px-3 py-1.5 text-xs ${u.status === 'ACTIVE' ? 'bg-accent-500 text-white hover:bg-accent-600' : 'bg-success-600 text-white hover:bg-success-700'}`}
                       >
                         {u.status === 'ACTIVE' ? 'Deactivate' : 'Activate'}
                       </button>

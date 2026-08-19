@@ -39,16 +39,16 @@ export default function StudentDashboard() {
 
   const stats = [
     { icon: BookOpen, label: 'Quizzes attempted', value: history.length, tone: 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300' },
-    { icon: Trophy, label: 'Passed', value: passed, tone: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-300' },
+    { icon: Trophy, label: 'Passed', value: passed, tone: 'bg-success-100 text-success-600 dark:bg-success-900/40 dark:text-success-300' },
     { icon: XCircle, label: 'Failed', value: failed, tone: 'bg-rose-100 text-rose-600 dark:bg-rose-900/40 dark:text-rose-300' },
-    { icon: Target, label: 'Average score', value: `${avg}%`, tone: 'bg-violet-100 text-violet-600 dark:bg-violet-900/40 dark:text-violet-300' },
-    { icon: TrendingUp, label: 'Highest score', value: `${best}%`, tone: 'bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-300' },
+    { icon: Target, label: 'Average score', value: `${avg}%`, tone: 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300' },
+    { icon: TrendingUp, label: 'Highest score', value: `${best}%`, tone: 'bg-accent-100 text-accent-600 dark:bg-accent-900/40 dark:text-accent-300' },
     { icon: Flame, label: 'Quizzes passed', value: streak, tone: 'bg-orange-100 text-orange-600 dark:bg-orange-900/40 dark:text-orange-300' },
   ]
 
   return (
     <div>
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 via-violet-600 to-fuchsia-500 p-8 text-white shadow-xl shadow-primary-500/20">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 via-primary-500 to-accent-500 p-8 text-white shadow-xl shadow-primary-500/20">
         <div className="absolute -right-10 -top-10 h-52 w-52 rounded-full bg-white/10 blur-2xl" />
         <div className="absolute -bottom-20 right-32 h-44 w-44 rounded-full bg-white/10 blur-xl" />
         <div className="relative flex flex-wrap items-center justify-between gap-6">
@@ -101,7 +101,7 @@ export default function StudentDashboard() {
                 <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#94a3b8' }} />
                 <YAxis domain={[0, 100]} tick={{ fontSize: 12, fill: '#94a3b8' }} />
                 <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0', background: 'white' }} />
-                <Line type="monotone" dataKey="score" name="Score %" stroke="#5b24f4" strokeWidth={2.5} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="score" name="Score %" stroke="#6c63ff" strokeWidth={2.5} dot={{ r: 4 }} />
               </LineChart>
             </ResponsiveContainer>
           )}

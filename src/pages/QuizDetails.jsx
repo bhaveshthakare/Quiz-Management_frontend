@@ -109,7 +109,7 @@ export default function QuizDetails() {
             </div>
 
             {quiz.negativeMarking && (
-              <div className="mt-6 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-900/30 dark:text-amber-200">
+              <div className="mt-6 flex items-start gap-3 rounded-xl border border-accent-200 bg-accent-50 p-4 text-sm text-accent-800 dark:border-accent-900 dark:bg-accent-900/30 dark:text-accent-200">
                 <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" />
                 <p>
                   Negative marking is enabled: each incorrect answer deducts{' '}
@@ -148,7 +148,7 @@ export default function QuizDetails() {
                 {limitReached ? 'Attempts exhausted' : starting ? 'Starting...' : 'Start Quiz'}
               </button>
               <p className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
-                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
+                <CheckCircle2 className="h-3.5 w-3.5 text-success-500" />
                 Questions and options are randomized for every attempt. Timer starts immediately.
               </p>
             </div>

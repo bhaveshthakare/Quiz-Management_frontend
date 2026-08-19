@@ -6,14 +6,41 @@
   --color-primary-50: #f2f1ff;
   --color-primary-100: #e7e5ff;
   --color-primary-200: #d2ceff;
-  --color-primary-300: #b0a6ff;
-  --color-primary-400: #8a75ff;
-  --color-primary-500: #6d47ff;
-  --color-primary-600: #5b24f4;
-  --color-primary-700: #4d16da;
-  --color-primary-800: #4115b3;
-  --color-primary-900: #371490;
-  --color-primary-950: #210a5e;
+  --color-primary-300: #b0a9ff;
+  --color-primary-400: #8f88ff;
+  --color-primary-500: #6c63ff;
+  --color-primary-600: #574af5;
+  --color-primary-700: #4639d6;
+  --color-primary-800: #3930b1;
+  --color-primary-900: #312b8e;
+  --color-primary-950: #1e1a5c;
+
+  --color-accent-50: #fff9eb;
+  --color-accent-100: #fff0c6;
+  --color-accent-200: #ffe088;
+  --color-accent-300: #ffca4a;
+  --color-accent-400: #ffb71f;
+  --color-accent-500: #ffb703;
+  --color-accent-600: #e39a00;
+  --color-accent-700: #b86e02;
+  --color-accent-800: #95540a;
+  --color-accent-900: #7b450c;
+  --color-accent-950: #47240a;
+
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-200: #bbf7d0;
+  --color-success-300: #86efac;
+  --color-success-400: #4ade80;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-success-800: #166534;
+  --color-success-900: #14532d;
+  --color-success-950: #052e16;
+
+  --color-background: #f8fafc;
+  --color-navy: #172554;
 }
 
 html {
@@ -21,7 +48,7 @@ html {
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+  @apply bg-background text-navy antialiased dark:bg-slate-950 dark:text-slate-100;
 }
 
 ::-webkit-scrollbar {
@@ -46,7 +73,7 @@ body {
     @apply inline-flex items-center justify-center gap-2 rounded-xl bg-rose-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-rose-700 disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-success {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-success-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-success-700 disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50;

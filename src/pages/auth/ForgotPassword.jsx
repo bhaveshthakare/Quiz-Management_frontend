@@ -22,7 +22,7 @@ export default function ForgotPassword() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-primary-50 via-white to-slate-50 px-4 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="card w-full max-w-md p-8 text-center">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-400">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-success-100 text-success-600 dark:bg-success-900/40 dark:text-success-400">
             <MailCheck className="h-7 w-7" />
           </div>
           <h1 className="text-xl font-bold text-slate-900 dark:text-white">Check your email</h1>

@@ -6,7 +6,7 @@ import {
 import client from '../../api/client'
 import Spinner from '../../components/Spinner'
 
-const PIE_COLORS = ['#10b981', '#f43f5e', '#3c6cf0', '#f59e0b', '#8b5cf6', '#06b6d4']
+const PIE_COLORS = ['#22c55e', '#f43f5e', '#6c63ff', '#ffb703', '#8f88ff', '#06b6d4']
 
 function ChartCard({ title, children }) {
   return (
@@ -41,7 +41,7 @@ export default function AdminAnalytics() {
               <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis allowDecimals={false} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0' }} />
-              <Line type="monotone" dataKey="value" name="Attempts" stroke="#3c6cf0" strokeWidth={2} dot={{ r: 3 }} />
+              <Line type="monotone" dataKey="value" name="Attempts" stroke="#6c63ff" strokeWidth={2} dot={{ r: 3 }} />
             </LineChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -53,7 +53,7 @@ export default function AdminAnalytics() {
               <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis allowDecimals={false} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0' }} />
-              <Bar dataKey="value" name="Students" fill="#3c6cf0" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="value" name="Students" fill="#6c63ff" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -78,7 +78,7 @@ export default function AdminAnalytics() {
               <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis type="category" dataKey="label" width={130} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0' }} />
-              <Bar dataKey="value" name="Avg %" fill="#8b5cf6" radius={[0, 6, 6, 0]} />
+              <Bar dataKey="value" name="Avg %" fill="#6c63ff" radius={[0, 6, 6, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -90,7 +90,7 @@ export default function AdminAnalytics() {
               <XAxis type="number" allowDecimals={false} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis type="category" dataKey="label" width={130} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0' }} />
-              <Bar dataKey="value" name="Attempts" fill="#f59e0b" radius={[0, 6, 6, 0]} />
+              <Bar dataKey="value" name="Attempts" fill="#ffb703" radius={[0, 6, 6, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>

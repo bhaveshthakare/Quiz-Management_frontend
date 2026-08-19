@@ -13,7 +13,7 @@ import { useAuth } from '../../store/auth'
 import Spinner from '../../components/Spinner'
 import Badge from '../../components/Badge'
 
-const PIE_COLORS = ['#8a75ff', '#f43f5e', '#10b981', '#f59e0b', '#06b6d4', '#f97316']
+const PIE_COLORS = ['#6c63ff', '#f43f5e', '#22c55e', '#ffb703', '#06b6d4', '#f97316']
 
 const statusTone = { PASSED: 'green', FAILED: 'red', IN_PROGRESS: 'blue' }
 
@@ -34,14 +34,14 @@ export default function AdminDashboard() {
 
   const cards = [
     { icon: Users, label: 'Total students', value: stats.totalStudents, tone: 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300', to: '/admin/users' },
-    { icon: BookOpen, label: 'Total quizzes', value: stats.totalQuizzes, tone: 'bg-violet-100 text-violet-600 dark:bg-violet-900/40 dark:text-violet-300', to: '/admin/quizzes' },
-    { icon: FileText, label: 'Published', value: stats.publishedQuizzes, tone: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-300', to: '/admin/quizzes' },
-    { icon: Layers, label: 'Drafts', value: stats.draftQuizzes, tone: 'bg-amber-100 text-amber-600 dark:bg-amber-900/40 dark:text-amber-300', to: '/admin/quizzes' },
+    { icon: BookOpen, label: 'Total quizzes', value: stats.totalQuizzes, tone: 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300', to: '/admin/quizzes' },
+    { icon: FileText, label: 'Published', value: stats.publishedQuizzes, tone: 'bg-success-100 text-success-600 dark:bg-success-900/40 dark:text-success-300', to: '/admin/quizzes' },
+    { icon: Layers, label: 'Drafts', value: stats.draftQuizzes, tone: 'bg-accent-100 text-accent-600 dark:bg-accent-900/40 dark:text-accent-300', to: '/admin/quizzes' },
     { icon: FileQuestion, label: 'Questions', value: stats.totalQuestions, tone: 'bg-sky-100 text-sky-600 dark:bg-sky-900/40 dark:text-sky-300', to: '/admin/quizzes' },
     { icon: ClipboardList, label: 'Attempts', value: stats.totalAttempts, tone: 'bg-rose-100 text-rose-600 dark:bg-rose-900/40 dark:text-rose-300', to: '/admin/attempts' },
-    { icon: CheckCircle2, label: 'Passed', value: stats.passedAttempts, tone: 'bg-teal-100 text-teal-600 dark:bg-teal-900/40 dark:text-teal-300', to: '/admin/attempts' },
+    { icon: CheckCircle2, label: 'Passed', value: stats.passedAttempts, tone: 'bg-success-100 text-success-600 dark:bg-success-900/40 dark:text-success-300', to: '/admin/attempts' },
     { icon: XCircle, label: 'Failed', value: stats.failedAttempts, tone: 'bg-orange-100 text-orange-600 dark:bg-orange-900/40 dark:text-orange-300', to: '/admin/attempts' },
-    { icon: TrendingUp, label: 'Average score', value: `${stats.averageScore}%`, tone: 'bg-indigo-100 text-indigo-600 dark:bg-indigo-900/40 dark:text-indigo-300', to: '/admin/analytics' },
+    { icon: TrendingUp, label: 'Average score', value: `${stats.averageScore}%`, tone: 'bg-primary-100 text-primary-600 dark:bg-primary-900/40 dark:text-primary-300', to: '/admin/analytics' },
   ]
 
   const quickActions = [
@@ -53,7 +53,7 @@ export default function AdminDashboard() {
 
   return (
     <div>
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 via-primary-500 to-violet-500 p-8 text-white shadow-xl shadow-primary-500/20">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-600 via-primary-500 to-accent-500 p-8 text-white shadow-xl shadow-primary-500/20">
         <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-white/10 blur-2xl" />
         <div className="absolute -bottom-16 right-24 h-40 w-40 rounded-full bg-white/10 blur-xl" />
         <div className="relative flex flex-wrap items-center justify-between gap-4">
@@ -101,7 +101,7 @@ export default function AdminDashboard() {
               <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis allowDecimals={false} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0' }} />
-              <Line type="monotone" dataKey="value" name="Attempts" stroke="#5b24f4" strokeWidth={2.5} dot={false} />
+              <Line type="monotone" dataKey="value" name="Attempts" stroke="#6c63ff" strokeWidth={2.5} dot={false} />
             </LineChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -113,7 +113,7 @@ export default function AdminDashboard() {
               <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis allowDecimals={false} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0' }} />
-              <Bar dataKey="value" name="Students" fill="#8a75ff" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="value" name="Students" fill="#6c63ff" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -138,7 +138,7 @@ export default function AdminDashboard() {
               <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis type="category" dataKey="label" width={120} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0' }} />
-              <Bar dataKey="value" name="Avg score %" fill="#8b5cf6" radius={[0, 6, 6, 0]} />
+              <Bar dataKey="value" name="Avg score %" fill="#6c63ff" radius={[0, 6, 6, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>
@@ -150,7 +150,7 @@ export default function AdminDashboard() {
               <XAxis type="number" allowDecimals={false} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <YAxis type="category" dataKey="label" width={120} tick={{ fontSize: 11, fill: '#94a3b8' }} />
               <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e2e8f0' }} />
-              <Bar dataKey="value" name="Attempts" fill="#f59e0b" radius={[0, 6, 6, 0]} />
+              <Bar dataKey="value" name="Attempts" fill="#ffb703" radius={[0, 6, 6, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </ChartCard>

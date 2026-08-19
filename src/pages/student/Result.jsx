@@ -32,8 +32,8 @@ export default function Result({ admin = false }) {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <div className={`card overflow-hidden ${passed ? 'ring-1 ring-emerald-300 dark:ring-emerald-800' : ''}`}>
-        <div className={`px-6 py-10 text-center ${passed ? 'bg-gradient-to-br from-emerald-500 to-emerald-700' : 'bg-gradient-to-br from-rose-500 to-rose-700'}`}>
+      <div className={`card overflow-hidden ${passed ? 'ring-1 ring-success-300 dark:ring-success-800' : ''}`}>
+        <div className={`px-6 py-10 text-center ${passed ? 'bg-gradient-to-br from-success-500 to-success-700' : 'bg-gradient-to-br from-rose-500 to-rose-700'}`}>
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 text-white">
             {passed ? <Trophy className="h-8 w-8" /> : <XCircle className="h-8 w-8" />}
           </div>
@@ -53,20 +53,20 @@ export default function Result({ admin = false }) {
             <p className="text-xl font-bold text-slate-900 dark:text-white">{result.totalQuestions}</p>
             <p className="text-xs text-slate-500">Total questions</p>
           </div>
-          <div className="rounded-xl bg-emerald-50 p-4 text-center dark:bg-emerald-900/30">
-            <CheckCircle2 className="mx-auto mb-1 h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-            <p className="text-xl font-bold text-emerald-700 dark:text-emerald-300">{result.correctAnswers}</p>
-            <p className="text-xs text-emerald-600/70 dark:text-emerald-400/70">Correct</p>
+          <div className="rounded-xl bg-success-50 p-4 text-center dark:bg-success-900/30">
+            <CheckCircle2 className="mx-auto mb-1 h-5 w-5 text-success-600 dark:text-success-400" />
+            <p className="text-xl font-bold text-success-700 dark:text-success-300">{result.correctAnswers}</p>
+            <p className="text-xs text-success-600/70 dark:text-success-400/70">Correct</p>
           </div>
           <div className="rounded-xl bg-rose-50 p-4 text-center dark:bg-rose-900/30">
             <XCircle className="mx-auto mb-1 h-5 w-5 text-rose-600 dark:text-rose-400" />
             <p className="text-xl font-bold text-rose-700 dark:text-rose-300">{result.incorrectAnswers}</p>
             <p className="text-xs text-rose-600/70 dark:text-rose-400/70">Incorrect</p>
           </div>
-          <div className="rounded-xl bg-amber-50 p-4 text-center dark:bg-amber-900/30">
-            <HelpCircle className="mx-auto mb-1 h-5 w-5 text-amber-600 dark:text-amber-400" />
-            <p className="text-xl font-bold text-amber-700 dark:text-amber-300">{result.unanswered}</p>
-            <p className="text-xs text-amber-600/70 dark:text-amber-400/70">Unanswered</p>
+          <div className="rounded-xl bg-accent-50 p-4 text-center dark:bg-accent-900/30">
+            <HelpCircle className="mx-auto mb-1 h-5 w-5 text-accent-600 dark:text-accent-400" />
+            <p className="text-xl font-bold text-accent-700 dark:text-accent-300">{result.unanswered}</p>
+            <p className="text-xs text-accent-600/70 dark:text-accent-400/70">Unanswered</p>
           </div>
           <div className="col-span-2 rounded-xl bg-slate-50 p-4 text-center md:col-span-1 dark:bg-slate-800">
             <Clock className="mx-auto mb-1 h-5 w-5 text-primary-600 dark:text-primary-400" />
@@ -116,7 +116,7 @@ export default function Result({ admin = false }) {
                   >
                     <div className="flex items-start gap-3">
                       {q.isCorrect ? (
-                        <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-emerald-500" />
+                        <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-success-500" />
                       ) : (
                         <XCircle className="mt-0.5 h-6 w-6 shrink-0 text-rose-500" />
                       )}
@@ -138,8 +138,8 @@ export default function Result({ admin = false }) {
                         let style = 'border-slate-200 dark:border-slate-700'
                         let mark = null
                         if (opt.isCorrect) {
-                          style = 'border-emerald-400 bg-emerald-50 dark:border-emerald-700 dark:bg-emerald-900/30'
-                          mark = <CheckCircle2 className="h-5 w-5 text-emerald-500" />
+                          style = 'border-success-400 bg-success-50 dark:border-success-700 dark:bg-success-900/30'
+                          mark = <CheckCircle2 className="h-5 w-5 text-success-500" />
                         } else if (opt.selected) {
                           style = 'border-rose-400 bg-rose-50 dark:border-rose-700 dark:bg-rose-900/30'
                           mark = <XCircle className="h-5 w-5 text-rose-500" />

@@ -150,7 +150,7 @@ export default function ManageQuestions() {
       </div>
 
       {importSummary && (
-        <div className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800 dark:border-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200">
+        <div className="mb-6 rounded-xl border border-success-200 bg-success-50 p-4 text-sm text-success-800 dark:border-success-900 dark:bg-success-900/30 dark:text-success-200">
           <p className="font-bold">Import complete: {importSummary.imported} imported, {importSummary.failed} failed</p>
           {importSummary.errors.length > 0 && (
             <ul className="mt-2 list-inside list-disc space-y-0.5 text-xs">
@@ -185,7 +185,7 @@ export default function ManageQuestions() {
                         key={o.id}
                         className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm ${
                           o.isCorrect
-                            ? 'border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-200'
+                            ? 'border-success-300 bg-success-50 text-success-800 dark:border-success-700 dark:bg-success-900/30 dark:text-success-200'
                             : 'border-slate-200 text-slate-600 dark:border-slate-700 dark:text-slate-300'
                         }`}
                       >
@@ -225,7 +225,7 @@ export default function ManageQuestions() {
             <div className="space-y-2">
               {options.map((_, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <span className={`w-6 text-center text-sm font-bold ${String(i) === String(correctIndex) ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}`}>
+                  <span className={`w-6 text-center text-sm font-bold ${String(i) === String(correctIndex) ? 'text-success-600 dark:text-success-400' : 'text-slate-400'}`}>
                     {LETTERS[i]}
                   </span>
                   <input
@@ -237,7 +237,7 @@ export default function ManageQuestions() {
                   <button
                     type="button"
                     onClick={() => setValue('correctIndex', String(i))}
-                    className={`btn px-3 py-2 text-xs ${String(i) === String(correctIndex) ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'btn-secondary'}`}
+                    className={`btn px-3 py-2 text-xs ${String(i) === String(correctIndex) ? 'bg-success-600 text-white hover:bg-success-700' : 'btn-secondary'}`}
                   >
                     {String(i) === String(correctIndex) ? '✓ Correct' : 'Correct'}
                   </button>

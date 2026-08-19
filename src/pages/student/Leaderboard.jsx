@@ -5,7 +5,7 @@ import Spinner from '../../components/Spinner'
 import EmptyState from '../../components/EmptyState'
 
 const medalTone = [
-  'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
+  'bg-accent-100 text-accent-700 dark:bg-accent-900/40 dark:text-accent-300',
   'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200',
   'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
 ]
@@ -37,7 +37,7 @@ export default function Leaderboard() {
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="mb-1 flex items-center gap-2 text-3xl font-bold text-slate-900 dark:text-white">
-            <Trophy className="h-7 w-7 text-amber-500" /> Leaderboard
+            <Trophy className="h-7 w-7 text-accent-500" /> Leaderboard
           </h1>
           <p className="text-slate-500 dark:text-slate-400">Top performers ranked by average score.</p>
         </div>
